@@ -17,11 +17,18 @@
   <body>
     <div class="container weather-app">
       <div class="row row-one">
-        <div class="col-8">
-          <input type="text" placeholder="🔍Enter city name" id="city-input" />
+        <div class="col-9">
+          <input
+            type="text"
+            placeholder="🔍Enter city name"
+            class="form-control"
+            id="city-input"
+          />
         </div>
 
-        <div class="col-4"><a href="#" class="btn btn-primary">Search</a></div>
+        <div class="col-3">
+          <a href="#" class="btn btn-primary w-100">Search</a>
+        </div>
       </div>
       <div class="row row-two">
         <div class="col-6">
@@ -47,7 +54,7 @@
             <div>
               <strong id="tempvalue">17</strong
               ><span class="units"
-                ><a href="#" id="celsius-main">°C</a>|<a
+                ><a href="#" id="celsius-main" class="active">°C</a>|<a
                   href="#"
                   id="fahrenheit-main"
                   >°F</a
