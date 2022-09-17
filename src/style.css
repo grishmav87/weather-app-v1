@@ -23,10 +23,6 @@ li {
   line-height: 19px;
 }
 
-li:first-letter {
-  text-transform: capitalize;
-}
-
 .row-one {
   margin: 20px 0;
 }

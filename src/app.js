@@ -40,6 +40,14 @@ function showCityInfo(event) {
     windElement.innerHTML = `Wind: ${windRound} km/h`;
     let dateElement = document.querySelector("#date");
     dateElement.innerHTML = formatDate(response.data.dt * 1000);
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+
+    let conditionsElement = document.querySelector("#current-conditions");
+    conditionsElement.innerHTML = `${response.data.weather[0].description}`;
   }
 
   let apiKey = "62d974cdf289555d8e3112425a1f6164";
