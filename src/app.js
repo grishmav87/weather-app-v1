@@ -24,6 +24,7 @@ function formatDate(timestamp) {
 
 //current-weather
 function showCityInfo(event) {
+  event.preventDefault();
   let cityInput = document.querySelector("#city-input");
   let cityName = document.querySelector("#city");
   cityName.innerHTML = `${cityInput.value}`;
@@ -75,8 +76,8 @@ function showTempCelsius(event) {
   temperatureElement.innerHTML = Math.round(tempCelsius);
 }
 
-let searchCity = document.querySelector(".btn-primary");
-searchCity.addEventListener("click", showCityInfo);
+let searchCity = document.querySelector("#search-form");
+searchCity.addEventListener("submit", showCityInfo);
 
 let tempFahrenheitLink = document.querySelector("#fahrenheit-main");
 tempFahrenheitLink.addEventListener("click", showTempFahrenheit);

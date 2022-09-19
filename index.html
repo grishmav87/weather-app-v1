@@ -16,20 +16,21 @@
   </head>
   <body>
     <div class="container weather-app">
-      <div class="row row-one">
-        <div class="col-9">
-          <input
-            type="text"
-            placeholder="🔍Enter city name"
-            class="form-control"
-            id="city-input"
-          />
+      <form id="search-form">
+        <div class="row row-one">
+          <div class="col-9">
+            <input
+              type="search"
+              placeholder="🔍Enter city name"
+              class="form-control"
+              id="city-input"
+            />
+          </div>
+          <div class="col-3">
+            <input type="submit" value="Search" class="btn btn-primary w-100" />
+          </div>
         </div>
-
-        <div class="col-3">
-          <a href="#" class="btn btn-primary w-100">Search</a>
-        </div>
-      </div>
+      </form>
       <div class="row row-two">
         <div class="col-6">
           <h1 id="city">Perth</h1>
