@@ -68,6 +68,33 @@ function showTempFahrenheit(event) {
   temperatureElement.innerHTML = tempFahrenheitvalue;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  let forecastHTML = `<div class="row">`;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+            <div class="weather-forecast-day">${day}</div>
+            <img
+              src="http://openweathermap.org/img/wn/10d@2x.png"
+              alt="Light rain"
+              id="icon"
+              width="42px"
+            />
+            <span class="weather-forecast-temp-max">18°</span
+            ><span class="weather-forecast-temp-min">12°</span>
+          </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+displayForecast();
+
 function showTempCelsius(event) {
   event.preventDefault();
   tempFahrenheitLink.classList.remove("active");

@@ -12,7 +12,6 @@
       crossorigin="anonymous"
     />
     <link href="src/style.css" rel="stylesheet" type="text/css" />
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container weather-app">
@@ -66,21 +65,9 @@
           </div>
         </div>
       </div>
-      <div class="weather-forecast">
-        <div class="row">
-          <div class="col-2">
-            <div class="weather-forecast-day">Thu</div>
-            <img
-              src="http://openweathermap.org/img/wn/10d@2x.png"
-              alt="Light rain"
-              id="icon"
-              width="42px"
-            />
-            <span class="weather-forecast-temp-max">18°</span
-            ><span class="weather-forecast-temp-min">12°</span>
-          </div>
-        </div>
-      </div>
+
+      <div class="weather-forecast" id="forecast"></div>
+
       <div class="footer">
         <a href="https://github.com/grishmav87/weather-app-v1" target="_blank"
           >Open-source code</a
@@ -93,6 +80,7 @@
         >
       </div>
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="src/app.js"></script>
   </body>
 </html>
