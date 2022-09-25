@@ -1,7 +1,7 @@
 body {
-  background-color: lightblue;
+  background-image: url("clouds3.jpg");
+  background-size: cover;
 }
-
 h1 {
   color: #000;
   font-size: 38px;
@@ -33,7 +33,7 @@ li {
 }
 .weather-app {
   max-width: 600px;
-  margin: 30px auto;
+  margin: 80px auto;
   padding: 20px;
   border: 1px solid #dadde1;
   border-radius: 10px;
