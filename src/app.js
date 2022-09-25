@@ -50,7 +50,7 @@ function displayForecast(response) {
             <span class="weather-forecast-temp-max">${Math.round(
               forecastDay.temp.max
             )}°</span
-            ><span class="weather-forecast-temp-min">${Math.round(
+            ><span class="weather-forecast-temp-min"> ${Math.round(
               forecastDay.temp.min
             )}°</span> </div>
           </div>`;
@@ -106,32 +106,7 @@ function searchInput(event) {
   search(cityInputElement.value);
 }
 
-function showTempFahrenheit(event) {
-  event.preventDefault();
-  tempCelsiusLink.classList.remove("active");
-  tempFahrenheitLink.classList.add("active");
-  let tempFahrenheitvalue = Math.round(tempCelsius * 1.8 + 32);
-  let temperatureElement = document.querySelector("#tempvalue");
-  temperatureElement.innerHTML = tempFahrenheitvalue;
-}
-
-function showTempCelsius(event) {
-  event.preventDefault();
-  tempFahrenheitLink.classList.remove("active");
-  tempCelsiusLink.classList.add("active");
-  let temperatureElement = document.querySelector("#tempvalue");
-  temperatureElement.innerHTML = Math.round(tempCelsius);
-}
-
-let tempCelsius = null;
-
 let searchCity = document.querySelector("#search-form");
 searchCity.addEventListener("submit", searchInput);
-
-let tempFahrenheitLink = document.querySelector("#fahrenheit-main");
-tempFahrenheitLink.addEventListener("click", showTempFahrenheit);
-
-let tempCelsiusLink = document.querySelector("#celsius-main");
-tempCelsiusLink.addEventListener("click", showTempCelsius);
 
 search("Perth");
