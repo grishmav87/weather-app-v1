@@ -1,4 +1,3 @@
-//current-time
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hour = date.getHours();
@@ -22,7 +21,6 @@ function formatDate(timestamp) {
   return `${day}, ${hour}:${minutes}`;
 }
 
-//current-weather
 function showCityInfo(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-input");
@@ -51,6 +49,8 @@ function showCityInfo(event) {
 
     let conditionsElement = document.querySelector("#current-conditions");
     conditionsElement.innerHTML = `${response.data.weather[0].description}`;
+
+    getForecast(response.data.coord);
   }
 
   let apiKey = "62d974cdf289555d8e3112425a1f6164";
@@ -58,17 +58,11 @@ function showCityInfo(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showCurrentWeather);
 }
+let searchCity = document.querySelector("#search-form");
+searchCity.addEventListener("submit", showCityInfo);
 
-function showTempFahrenheit(event) {
-  event.preventDefault();
-  tempCelsiusLink.classList.remove("active");
-  tempFahrenheitLink.classList.add("active");
-  let tempFahrenheitvalue = Math.round(tempCelsius * 1.8 + 32);
-  let temperatureElement = document.querySelector("#tempvalue");
-  temperatureElement.innerHTML = tempFahrenheitvalue;
-}
-
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHTML = `<div class="row">`;
@@ -91,9 +85,26 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
-displayForecast();
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "a2dda52dce059eb8a14e95aaa0db6ab7";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function showTempFahrenheit(event) {
+  event.preventDefault();
+  tempCelsiusLink.classList.remove("active");
+  tempFahrenheitLink.classList.add("active");
+  let tempFahrenheitvalue = Math.round(tempCelsius * 1.8 + 32);
+  let temperatureElement = document.querySelector("#tempvalue");
+  temperatureElement.innerHTML = tempFahrenheitvalue;
+}
+let tempFahrenheitLink = document.querySelector("#fahrenheit-main");
+tempFahrenheitLink.addEventListener("click", showTempFahrenheit);
 
 function showTempCelsius(event) {
   event.preventDefault();
@@ -102,14 +113,7 @@ function showTempCelsius(event) {
   let temperatureElement = document.querySelector("#tempvalue");
   temperatureElement.innerHTML = Math.round(tempCelsius);
 }
-
-let searchCity = document.querySelector("#search-form");
-searchCity.addEventListener("submit", showCityInfo);
-
-let tempFahrenheitLink = document.querySelector("#fahrenheit-main");
-tempFahrenheitLink.addEventListener("click", showTempFahrenheit);
-
 let tempCelsiusLink = document.querySelector("#celsius-main");
 tempCelsiusLink.addEventListener("click", showTempCelsius);
 
-let tempCelsius = null;
+let tempCelsius = 17;
